@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            text-align: center;
+            background: #ffcccb;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 50px;
+            color: #ff1493;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        .balloons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Happy Birthday! 🎂</h1>
+    <div class="balloons"></div>
+    <script>
+        function createBalloons() {
+            const balloonContainer = document.querySelector('.balloons');
+            for (let i = 0; i < 20; i++) {
+                let balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+                balloon.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                balloonContainer.appendChild(balloon);
+            }
+        }
+        createBalloons();
+    </script>
+
+    <div class="sliding-text">Kelan Tayo Swimming</div>
+    <style>
+        .sliding-text {
+            position: absolute;
+            bottom: 50%;
+            width: 100%;
+            font-size: 40px;
+            color: #ffffff;
+            font-weight: bold;
+            animation: slide 5s linear infinite;
+        }
+        @keyframes slide {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .sliding-text::before {
+            content: '';
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+            background-image: url(./Bday.jpg);
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            position: static;
+            margin: 20px auto 0;
+            display: block;
+        }
+    </style>
+</body>
+</html>
